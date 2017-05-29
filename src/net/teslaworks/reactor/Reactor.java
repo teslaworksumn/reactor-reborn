@@ -8,7 +8,11 @@ public class Reactor {
         {
 	    MinimObject minimObject = new MinimObject();
 	    Minim minim = new Minim(minimObject);
+            
+            /* tests sketchPath function, should return an absolute path to the
+            minim library */
             System.out.println(minimObject.sketchPath("lib/minim"));
+            
             System.out.println("Here");
 	}
 

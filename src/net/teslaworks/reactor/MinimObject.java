@@ -12,7 +12,6 @@ public class MinimObject {
     */
     public String sketchPath(String fileName) {
         
-        String absolute_path;
         Path real_path = null;
         Path path = FileSystems.getDefault().getPath(fileName);
         
@@ -20,16 +19,15 @@ public class MinimObject {
             real_path = path.toRealPath();
         } 
         catch (NoSuchFileException x) {
-            System.err.format("%s: no such" + " file or directory%n", path);
+            System.err.format("%s: no such" + " file or directory\n", path);
             // Logic for case when file doesn't exist.
         } 
         catch (IOException x) {
-            System.err.format("%s%n", x);
+            System.err.format("%s\n", x);
             // Logic for other sort of file error.
         }
-        absolute_path = real_path.toString();
         
-        return absolute_path;
+        return real_path.toString();
     }
     
     /*
