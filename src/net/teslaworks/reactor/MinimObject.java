@@ -1,9 +1,11 @@
 package net.teslaworks.reactor;
 
 import java.io.InputStream;
+import java.io.FileInputStream;
 import java.nio.file.FileSystems;
 import java.io.IOException; //thrown by toRealPath()
 import java.nio.file.NoSuchFileException; //thrown by toRealPath()
+import java.io.FileNotFoundException; //thrown by FileInputStream obj creation
 import java.nio.file.Path;
 
 public class MinimObject {
@@ -34,6 +36,15 @@ public class MinimObject {
     Get an input stream for a given file name (not necessarily an absolute path)
     */
     public InputStream createInput(String fileName) {
-        return null;
+        InputStream inputstream = null;
+        String full_name = sketchPath(fileName);
+        
+        try {
+            inputstream = new FileInputStream(full_name);
+        }
+        catch (FileNotFoundException x) {
+            System.err.format("%s\n", x);
+        }
+        return inputstream;
     }
 }
